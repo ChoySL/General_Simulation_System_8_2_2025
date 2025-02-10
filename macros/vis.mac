@@ -1,0 +1,13 @@
+/vis/open OGL
+/vis/viewer/set/viewpointVector 0 0 1
+/vis/drawVolume
+/vis/viewer/set/autoRefresh true
+/vis/scene/add/trajectories smooth
+/vis/scene/add/scale 1 m
+/vis/scene/add/axes 0 0 -8 2.5 m
+/vis/scene/add/eventID
+/vis/scene/endOfEventAction accumulate
+#/gui/addMenu run Run
+#/gui/addButton run "beamOn 1000" "/run/beamOn 1000"
+#/gui/addMenu power Firepower
+#/gui/addButton power "2 GeV" "/gun/particle mu-" "/gun/energy 2 GeV" "/gun/position 0 5*m 0" "/gun/direction 0 -1 0" "/run/beamOn 1"
