@@ -9,7 +9,7 @@ And pls Use the distribution_generator.cpp to generate the correct root file wit
 The build target of the executable is bacis_setup.exe
 
 PLEASE!!!!!
-run the code said on your terminal in your G4 terminal
+run the code shown on your terminal in your G4 terminal
 
 You can change everything needed for simulation and control the entire simulation  in the UDInCodeControllingSurface
 
