@@ -5,7 +5,7 @@
 #include <cmath>
 
 UDSteppingAction::UDSteppingAction()
-    : G4UserSteppingAction() {}//, fEventAction(eventAction) 
+    : G4UserSteppingAction() {}
 
     UDSteppingAction::~UDSteppingAction() {}
 
@@ -67,6 +67,5 @@ void UDSteppingAction::UserSteppingAction(const G4Step* step) {
         manager_stepping->FillNtupleDColumn(pps, 10, azimuth_diff);
         manager_stepping->AddNtupleRow(pps);
 
-        //fEventAction->AddScatteringAngle(scatteringAngle);
     }
 }
