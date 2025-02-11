@@ -92,7 +92,7 @@ for(int k=1;k<=num_particles;k++){
 	manager->CreateNtupleDColumn("Inclination [0,Pi]");//6
 	manager->CreateNtupleDColumn("Azimuth [-Pi,Pi)");//7
 	manager->CreateNtupleDColumn("Inclination_diff [0,Pi]");//8
-	manager->CreateNtupleDColumn("Step Length");
+	manager->CreateNtupleDColumn("Particle Type Number");
 	manager->FinishNtuple(x+1+k);
 }
 	manager->CreateNtuple("Collective Event Modified" , "events");
@@ -105,7 +105,7 @@ for(int k=1;k<=num_particles;k++){
 	manager->CreateNtupleDColumn("Inclination [0,Pi]");//6
 	manager->CreateNtupleDColumn("Azimuth [-Pi,Pi)");//7
 	manager->CreateNtupleDColumn("Inclination_diff [0,Pi]");//8
-	manager->CreateNtupleDColumn("Step Length");
+	manager->CreateNtupleDColumn("Particle Type Number");
 	manager->FinishNtuple(x+2+num_particles);
 
 	manager->CreateNtuple("Primany Particle Stepping" , "events");
