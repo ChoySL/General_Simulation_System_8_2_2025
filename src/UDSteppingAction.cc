@@ -52,7 +52,11 @@ void UDSteppingAction::UserSteppingAction(const G4Step* step) {
         double azimuth1 = std::atan2(momUDpost[1], momUDpost[0]);
         double inclination_diff=inclination1-inclination;
         double azimuth_diff=azimuth1-azimuth;
-        
+        G4double edep = step->GetTotalEnergyDeposit();
+        G4double stepLength = step->GetStepLength();
+        G4double kinEnergy = step->GetDeltaEnergy();   
+        int pno;
+        ControllingSurface.Particles_no_finder(particleDef->GetParticleName(),pno);
         manager_stepping->GetNtuple("Primany Particle Stepping");
         manager_stepping->FillNtupleIColumn(pps, 0, eventNum);
         manager_stepping->FillNtupleIColumn(pps, 1, stepN);
@@ -65,6 +69,10 @@ void UDSteppingAction::UserSteppingAction(const G4Step* step) {
         manager_stepping->FillNtupleDColumn(pps, 8, azimuth1);
         manager_stepping->FillNtupleDColumn(pps, 9, inclination_diff);
         manager_stepping->FillNtupleDColumn(pps, 10, azimuth_diff);
+        manager_stepping->FillNtupleIColumn(pps, 11, pno);
+        manager_stepping->FillNtupleDColumn(pps, 12, edep);
+        manager_stepping->FillNtupleDColumn(pps, 13, stepLength);
+        manager_stepping->FillNtupleDColumn(pps, 14, kinEnergy);
         manager_stepping->AddNtupleRow(pps);
 
     }

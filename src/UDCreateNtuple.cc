@@ -120,7 +120,10 @@ for(int k=1;k<=num_particles;k++){
 	manager->CreateNtupleDColumn("Azimuth [-Pi,Pi)");//8
 	manager->CreateNtupleDColumn("Inclination_diff [0,Pi]");//9
 	manager->CreateNtupleDColumn("Azimuth_diff [-Pi,Pi)");//10
-	//manager->CreateNtupleDColumn("Particle Type Number");//10
+	manager->CreateNtupleIColumn("Particle Type Number");//11
+	manager->CreateNtupleDColumn("EnergyDeposit");//12
+	manager->CreateNtupleDColumn("StepLength");//13
+	manager->CreateNtupleDColumn("DeltaEnergy");//14
 	manager->FinishNtuple(x+3+num_particles);
 
 
