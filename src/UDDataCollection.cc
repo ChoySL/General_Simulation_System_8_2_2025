@@ -34,6 +34,7 @@ G4bool RPCDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROIhist)
 	G4double muonMomentumpost = momMuonpost.mag() / 1000;
 	G4String dname = asd->GetName();
 	G4ThreeVector momUD = preStepPoint->GetMomentumDirection();
+	G4ThreeVector momUDpost = postStepPoint->GetMomentumDirection();
 	G4AnalysisManager *manager = G4AnalysisManager::Instance();
 
 	for (int jumper = 0; jumper < net; jumper++)
@@ -82,8 +83,9 @@ G4bool RPCDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROIhist)
 
 		int tag;
 		ControllingSurface.Particle_Dealer(net, particleDef->GetParticleName(), tag);
-		double incidentI;
-		ControllingSurface.Getincident(incidentI);
+
+		double inclination3p = std::acos(momUDpost[2]);
+		double azimuth3p = std::atan2(momUDpost[1], momUDpost[0]);
 		manager->FillNtupleIColumn(tag, 0, eventNum);
 		manager->FillNtupleDColumn(tag, 1, (muonMomentum-muonMomentumpost));
 		manager->FillNtupleDColumn(tag, 2, hitTime);
@@ -94,7 +96,7 @@ G4bool RPCDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROIhist)
 		double azimuth3 = std::atan2(momUD[1], momUD[0]);
 		manager->FillNtupleDColumn(tag, 6, inclination3);
 		manager->FillNtupleDColumn(tag, 7, azimuth3);
-		manager->FillNtupleDColumn(tag, 8, (incidentI - inclination3));
+		manager->FillNtupleDColumn(tag, 8, (inclination3p - inclination3));
 		manager->FillNtupleDColumn(tag, 9, stepLength);
 		manager->AddNtupleRow(tag);
 
