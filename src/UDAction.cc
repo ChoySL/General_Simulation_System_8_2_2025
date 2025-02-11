@@ -30,4 +30,6 @@ std::vector< G4String > Detector_names;
     SetUserAction(runAction);
     UDEventAction* eventAction = new UDEventAction();
     SetUserAction(eventAction);
+    UDSteppingAction* SteppingAction = new UDSteppingAction();
+    SetUserAction(SteppingAction);
 }

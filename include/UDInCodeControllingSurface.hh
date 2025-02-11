@@ -30,6 +30,9 @@ class UDInCodeControllingSurface {
 
 public:
     void GetHit(G4String target);
+    void RunStart();
+    void addstep(int tar);
+    int returnstep(int tar);
     void Getdeleted(std::vector<G4String> &outtype, G4String filename2);
     void CreateHistogram(G4String filet);
     void Getincident(double &inc);
@@ -46,11 +49,13 @@ public:
 
 private:
     static std::vector<G4String> storedParticletype;
+    static std::vector<G4int> steplist;  
     static G4String generator_file;
     static G4String Ntuple_file_temp;
     static G4String Ntuple_file;
     static G4int NumberOfInputParticles;
     static G4String Directory;
+
 };
 
 #endif // UDINCODECONTROLLINGSURFACE_HH

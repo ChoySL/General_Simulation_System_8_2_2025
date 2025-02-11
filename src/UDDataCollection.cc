@@ -23,6 +23,7 @@ G4bool RPCDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROIhist)
 	G4double stepLength = aStep->GetStepLength();
 	G4ThreeVector posMuon = preStepPoint->GetPosition();
 	G4ThreeVector momMuon = preStepPoint->GetMomentum();
+	G4ThreeVector momMuonpost = postStepPoint->GetMomentum();
 	const G4VTouchable *touchable = aStep->GetPreStepPoint()->GetTouchable();
 	G4int copyNo = touchable->GetCopyNumber();
 	G4VPhysicalVolume *physVol = touchable->GetVolume();
@@ -30,6 +31,7 @@ G4bool RPCDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROIhist)
 	G4double hitTime = preStepPoint->GetGlobalTime();
 	G4LogicalVolume *asd = physVol->GetLogicalVolume();
 	G4double muonMomentum = momMuon.mag() / 1000;
+	G4double muonMomentumpost = momMuonpost.mag() / 1000;
 	G4String dname = asd->GetName();
 	G4ThreeVector momUD = preStepPoint->GetMomentumDirection();
 	G4AnalysisManager *manager = G4AnalysisManager::Instance();
@@ -83,7 +85,7 @@ G4bool RPCDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROIhist)
 		double incidentI;
 		ControllingSurface.Getincident(incidentI);
 		manager->FillNtupleIColumn(tag, 0, eventNum);
-		manager->FillNtupleDColumn(tag, 1, (integerPart - muonMomentum));
+		manager->FillNtupleDColumn(tag, 1, (muonMomentum-muonMomentumpost));
 		manager->FillNtupleDColumn(tag, 2, hitTime);
 		manager->FillNtupleDColumn(tag, 3, posMuon[0]);
 		manager->FillNtupleDColumn(tag, 4, posMuon[1]);
@@ -102,7 +104,7 @@ G4bool RPCDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROIhist)
 		int num_particles = particle_list.size();
 		int fnet = Collective + num_particles + 1;
 		manager->FillNtupleIColumn(fnet, 0, eventNum);
-		manager->FillNtupleDColumn(fnet, 1, (integerPart - muonMomentum)); //???
+		manager->FillNtupleDColumn(fnet, 1, (muonMomentum-muonMomentumpost)); //???
 		manager->FillNtupleDColumn(fnet, 2, hitTime);
 		manager->FillNtupleDColumn(fnet, 3, posMuon[0]);
 		manager->FillNtupleDColumn(fnet, 4, posMuon[1]);

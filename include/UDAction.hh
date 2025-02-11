@@ -8,6 +8,7 @@
 #include "G4LogicalVolumeStore.hh"
 #include "UDRunAction.hh"
 #include "UDEventAction.hh"
+#include "UDSteppingAction.hh"
 
 class Action : public G4VUserActionInitialization {
 	public:

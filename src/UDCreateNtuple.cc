@@ -107,6 +107,23 @@ for(int k=1;k<=num_particles;k++){
 	manager->CreateNtupleDColumn("Inclination_diff [0,Pi]");//8
 	manager->CreateNtupleDColumn("Step Length");
 	manager->FinishNtuple(x+2+num_particles);
+
+	manager->CreateNtuple("Primany Particle Stepping" , "events");
+	manager->CreateNtupleIColumn("eventNumber");//0
+	manager->CreateNtupleIColumn("NumberofStep");//1
+	manager->CreateNtupleDColumn("muonMomentum_diff");//2
+	manager->CreateNtupleDColumn("hitTime");  //3, ns
+	manager->CreateNtupleDColumn("hitPositionX_truth");//4, mm
+	manager->CreateNtupleDColumn("hitPositionY_truth");//5
+	manager->CreateNtupleDColumn("hitPositionZ_truth");//6
+	manager->CreateNtupleDColumn("Inclination [0,Pi]");//7
+	manager->CreateNtupleDColumn("Azimuth [-Pi,Pi)");//8
+	manager->CreateNtupleDColumn("Inclination_diff [0,Pi]");//9
+	manager->CreateNtupleDColumn("Azimuth_diff [-Pi,Pi)");//10
+	//manager->CreateNtupleDColumn("Particle Type Number");//10
+	manager->FinishNtuple(x+3+num_particles);
+
+
 }
 
 CreateNtuple::~CreateNtuple() {}

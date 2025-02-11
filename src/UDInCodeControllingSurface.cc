@@ -2,6 +2,7 @@
 
 #define M_PI 3.14159265358979323846
 std::vector<G4String> UDInCodeControllingSurface::storedParticletype;
+std::vector<G4int> UDInCodeControllingSurface::steplist;
 G4String UDInCodeControllingSurface::generator_file;
 G4String UDInCodeControllingSurface::Ntuple_file;
 G4String UDInCodeControllingSurface::Ntuple_file_temp;
@@ -67,6 +68,19 @@ void UDInCodeControllingSurface::GetHit(G4String target)
     {
         storedParticletype.push_back(target);
     }
+}
+void UDInCodeControllingSurface::RunStart(){
+    for(int i=0;i<NumberOfInputParticles;i++){
+    steplist.push_back(0);
+}
+}
+void UDInCodeControllingSurface::addstep(int tar){
+    steplist[tar]++;
+}
+int UDInCodeControllingSurface::returnstep(int tar){
+    int out;
+    out=steplist[tar];
+    return out;
 }
 void UDInCodeControllingSurface::StoreNumberOfParticles(int entries)
 {
