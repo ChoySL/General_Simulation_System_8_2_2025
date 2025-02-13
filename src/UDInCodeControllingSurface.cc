@@ -39,7 +39,7 @@ void UDInCodeControllingSurface::Getfilename(G4String target, G4String &output)
     if (target == "Ntuple_temp")
     {
 
-        output = "Temportary/";
+        //output = "Temportary/";
         output = output + "output1.root";
         Ntuple_file_temp = output;
     }
