@@ -46,6 +46,11 @@ std::vector< G4String > Detectors_name_list;
 	G4UImanager* UImanager = G4UImanager::GetUIpointer();
 	if (ui) {
 		UImanager->ApplyCommand("/control/execute vis.mac");
+		int en;
+		ControllingSurface.GetNumberOfParticles(en);
+		G4String ex="/run/beamOn ";
+		ex=ex+en;
+		UImanager->ApplyCommand(ex);
 		ui->SessionStart();
 	}
 	else {
