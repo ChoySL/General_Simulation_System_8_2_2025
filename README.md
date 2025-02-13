@@ -9,14 +9,15 @@ And pls Use the distribution_generator.cpp to generate the correct root file wit
 The build target of the executable is bacis_setup.exe
 
 PLEASE!!!!!
-run the code shown on your terminal in your G4 terminal
+run the code shown on your terminal in your G4 terminal(NO NEED)
+Everything will be run automatically
 
 You can change everything needed for simulation and control the entire simulation  in the UDInCodeControllingSurface
 
 The other thing you need to be a aware of the line 78 in the DataCollection
 as the current config will allow you to get all info from the lower plate
 
-Author: Choy Sheung Lam(8/2/2025)
+Author: Choy Sheung Lam(8/2/2025),Fung Kin Yip
 
 
 
