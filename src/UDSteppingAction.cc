@@ -11,6 +11,7 @@ UDSteppingAction::UDSteppingAction()
 
 void UDSteppingAction::UserSteppingAction(const G4Step* step) {
     G4Track* track = step->GetTrack();
+    G4ParticleDefinition *particleDef = track->GetDefinition();
     G4StepPoint *preStepPoint = step->GetPreStepPoint();
 	G4StepPoint *postStepPoint = step->GetPostStepPoint();
     G4int eventNum = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
